@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperArcade 3D</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">3D browser game portal</p>
+          <h1>HyperArcade 3D</h1>
+          <p class="lead">100 playable 3D modes across racing, action, shooter, sports, puzzle, survival, strategy, platformer, arena, and flight.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="playFeatured" type="button">Play Racing</button>
+          <button id="randomGame" type="button">Random Game</button>
+        </div>
+      </section>
+
+      <section class="layout">
+        <aside class="library" aria-label="Game library">
+          <div class="filters">
+            <input id="search" type="search" placeholder="Search 100 games" aria-label="Search games" />
+            <select id="category" aria-label="Filter by genre">
+              <option value="all">All genres</option>
+            </select>
+          </div>
+          <div id="gameList" class="game-list" aria-label="Games"></div>
+        </aside>
+
+        <section class="stage">
+          <header class="topbar">
+            <div>
+              <p id="gameNumber" class="eyebrow">Game 001</p>
+              <h2 id="gameTitle">Loading</h2>
+            </div>
+            <div class="actions">
+              <button id="pauseBtn" type="button">Pause</button>
+              <button id="restartBtn" type="button">Restart</button>
+            </div>
+          </header>
+
+          <div class="scoreboard">
+            <div><span>Score</span><strong id="score">0</strong></div>
+            <div><span>Goal</span><strong id="goal">0</strong></div>
+            <div><span>Time</span><strong id="timer">0</strong></div>
+            <div><span>Lives</span><strong id="lives">0</strong></div>
+          </div>
+
+          <div id="viewport" class="viewport" aria-label="3D game viewport">
+            <div id="overlay" class="overlay hidden"></div>
+          </div>
+
+          <div class="briefing">
+            <div>
+              <h3>Mission</h3>
+              <p id="mission"></p>
+            </div>
+            <div>
+              <h3>Controls</h3>
+              <p id="controls"></p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
