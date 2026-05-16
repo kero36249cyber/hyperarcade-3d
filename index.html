@@ -1,80 +1,69 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HyperPlay 3D</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boostfall Arena</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="app">
-      <section class="hero">
-        <div>
-          <p class="eyebrow">100 different 3D mini games</p>
-          <h1>HyperPlay 3D</h1>
-          <p class="lead">Play car racing, space shooting, soccer, fighting, platforming, flight rings, survival, puzzle, strategy, and runner games.</p>
+    <main class="shell">
+      <canvas id="game" aria-label="Boostfall Arena game canvas"></canvas>
+
+      <section class="hud hud-top">
+        <div class="score-block blue">
+          <span class="label">Blue</span>
+          <strong id="blueScore">0</strong>
         </div>
-        <div class="hero-actions">
-          <button id="playFeatured" type="button">Start Game</button>
-          <button id="randomGame" type="button">Random Game</button>
+        <div class="timer" id="timer">03:00</div>
+        <div class="score-block red">
+          <span class="label">Red</span>
+          <strong id="redScore">0</strong>
         </div>
       </section>
 
-      <section class="layout">
-        <aside class="library" aria-label="Game library">
-          <div class="filters">
-            <input id="search" type="search" placeholder="Search 100 games" aria-label="Search games" />
-            <select id="category" aria-label="Filter by genre">
-              <option value="all">All genres</option>
-            </select>
-          </div>
-          <div id="gameList" class="game-list" aria-label="Games"></div>
-        </aside>
+      <section class="hud status-panel">
+        <div>
+          <span>Health</span>
+          <meter id="health" min="0" max="100" value="100"></meter>
+        </div>
+        <div>
+          <span>Armor</span>
+          <meter id="armor" min="0" max="100" value="45"></meter>
+        </div>
+        <div>
+          <span>Boost</span>
+          <meter id="boost" min="0" max="100" value="72"></meter>
+        </div>
+      </section>
 
-        <section class="stage">
-          <header class="topbar">
-            <div>
-              <p id="gameNumber" class="eyebrow">Game 001</p>
-              <h2 id="gameTitle">Loading</h2>
-            </div>
-            <div class="actions">
-              <button id="pauseBtn" type="button">Pause</button>
-              <button id="restartBtn" type="button">Restart</button>
-            </div>
-          </header>
+      <section class="hud mode-panel">
+        <button id="pauseBtn" type="button" title="Pause">II</button>
+        <button id="resetBtn" type="button" title="Reset match">↻</button>
+        <span id="feed">Kickoff ready</span>
+      </section>
 
-          <div class="scoreboard">
-            <div><span>Score</span><strong id="score">0</strong></div>
-            <div><span>Goal</span><strong id="goal">0</strong></div>
-            <div><span>Time</span><strong id="timer">0</strong></div>
-            <div><span>Lives</span><strong id="lives">0</strong></div>
-          </div>
+      <canvas id="radar" class="radar" width="172" height="172" aria-hidden="true"></canvas>
 
-          <div id="viewport" class="viewport" aria-label="3D game viewport">
-            <div id="overlay" class="overlay hidden"></div>
+      <section class="menu" id="menu">
+        <div class="menu-panel">
+          <p class="eyebrow">Rocket car battle arena</p>
+          <h1>Boostfall Arena</h1>
+          <p class="summary">Score goals, survive the closing zone, ram rival cars, collect armor, and use boost to turn the whole field into chaos.</p>
+          <div class="menu-actions">
+            <button id="playBtn" type="button">Play</button>
+            <button id="trainingBtn" type="button">Training</button>
           </div>
-
-          <div class="briefing">
-            <div>
-              <h3>Mission</h3>
-              <p id="mission"></p>
-            </div>
-            <div>
-              <h3>Controls</h3>
-              <p id="controls"></p>
-            </div>
-          </div>
-        </section>
+          <dl class="controls">
+            <div><dt>Drive</dt><dd>WASD or arrows</dd></div>
+            <div><dt>Boost</dt><dd>Shift</dd></div>
+            <div><dt>Jump</dt><dd>Space</dd></div>
+            <div><dt>Handbrake</dt><dd>Q / E</dd></div>
+            <div><dt>Pause</dt><dd>P</dd></div>
+          </dl>
+        </div>
       </section>
     </main>
-
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js"
-        }
-      }
-    </script>
-    <script type="module" src="app.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>
